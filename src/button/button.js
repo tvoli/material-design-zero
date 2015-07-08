@@ -116,11 +116,17 @@ MaterialButton.prototype.init = function() {
 MaterialButton.prototype.mdlDowngrade_ = function() {
   'use strict';
   if (this.rippleElement_) {
+    console.log(this.rippleElement_);
     this.rippleElement_.removeEventListener('mouseup', this.boundRippleBlurHandler);
   }
   this.element_.removeEventListener('mouseup', this.boundButtonBlurHandler);
   this.element_.removeEventListener('mouseleave', this.boundButtonBlurHandler);
 };
+
+var componentHandler = componentHandler || null;
+if (!componentHandler && typeof module === 'object') {
+  var componentHandler = require('../mdlComponentHandler.js');
+}
 
 // The component registers itself. It can assume componentHandler is available
 // in the global scope.

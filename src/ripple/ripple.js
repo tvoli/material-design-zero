@@ -223,6 +223,7 @@ MaterialRipple.prototype.init = function() {
 */
 MaterialRipple.prototype.mdlDowngrade_ = function() {
   'use strict';
+  console.log('ripple downgrade');
   this.element_.removeEventListener('mousedown',
   this.boundDownHandler);
   this.element_.removeEventListener('touchstart',
@@ -233,6 +234,11 @@ MaterialRipple.prototype.mdlDowngrade_ = function() {
   this.element_.removeEventListener('touchend', this.boundUpHandler);
   this.element_.removeEventListener('blur', this.boundUpHandler);
 };
+
+var componentHandler = componentHandler || null;
+if (!componentHandler && typeof module === 'object') {
+  var componentHandler = require('../mdlComponentHandler.js');
+}
 
 // The component registers itself. It can assume componentHandler is available
 // in the global scope.
