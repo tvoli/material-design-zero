@@ -208,7 +208,6 @@ var componentHandler = (function() {
         component[componentConfigProperty_]
           .classConstructor.prototype
           .hasOwnProperty(downgradeMethod_)) {
-      console.log(component[downgradeMethod_].toString());
       component[downgradeMethod_]();
       var componentIndex = createdComponents_.indexOf(component);
       createdComponents_.splice(componentIndex, 1);

@@ -116,7 +116,6 @@ MaterialButton.prototype.init = function() {
 MaterialButton.prototype.mdlDowngrade_ = function() {
   'use strict';
   if (this.rippleElement_) {
-    console.log(this.rippleElement_);
     this.rippleElement_.removeEventListener('mouseup', this.boundRippleBlurHandler);
   }
   this.element_.removeEventListener('mouseup', this.boundButtonBlurHandler);

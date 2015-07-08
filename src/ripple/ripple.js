@@ -223,7 +223,6 @@ MaterialRipple.prototype.init = function() {
 */
 MaterialRipple.prototype.mdlDowngrade_ = function() {
   'use strict';
-  console.log('ripple downgrade');
   this.element_.removeEventListener('mousedown',
   this.boundDownHandler);
   this.element_.removeEventListener('touchstart',
