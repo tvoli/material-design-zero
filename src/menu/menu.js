@@ -458,6 +458,11 @@ MaterialMenu.prototype.toggle = function(evt) {
   }
 };
 
+var componentHandler = componentHandler || null;
+if (!componentHandler && typeof module === 'object') {
+  var componentHandler = require('../mdlComponentHandler.js');
+}
+
 // The component registers itself. It can assume componentHandler is available
 // in the global scope.
 componentHandler.register({
