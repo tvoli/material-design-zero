@@ -468,5 +468,6 @@ if (!componentHandler && typeof module === 'object') {
 componentHandler.register({
   constructor: MaterialMenu,
   classAsString: 'MaterialMenu',
-  cssClass: 'mdl-js-menu'
+  cssClass: 'mdl-js-menu',
+  widget: true
 });

@@ -60,8 +60,17 @@ MaterialTooltip.prototype.handleMouseEnter_ = function(event) {
 
   event.stopPropagation();
   var props = event.target.getBoundingClientRect();
-  this.element_.style.left = props.left + (props.width / 2) + 'px';
-  this.element_.style.marginLeft = -1 * (this.element_.offsetWidth / 2) + 'px';
+  var left = props.left + (props.width / 2);
+  var marginLeft = -1 * (this.element_.offsetWidth / 2);
+
+  if (left + marginLeft < 0) {
+    this.element_.style.left = 0;
+    this.element_.style.marginLeft = 0;
+  } else {
+    this.element_.style.left = left + 'px';
+    this.element_.style.marginLeft = marginLeft + 'px';
+  }
+
   this.element_.style.top = props.top + props.height + 10 + 'px';
   this.element_.classList.add(this.CssClasses_.IS_ACTIVE);
   window.addEventListener('scroll', this.boundMouseLeaveHandler, false);
@@ -96,11 +105,19 @@ MaterialTooltip.prototype.init = function() {
     }
 
     if (this.forElement_) {
+      // Tabindex needs to be set for `blur` events to be emitted
+      if (!this.forElement_.getAttribute('tabindex')) {
+        this.forElement_.setAttribute('tabindex', '0');
+      }
+
       this.boundMouseEnterHandler = this.handleMouseEnter_.bind(this);
       this.boundMouseLeaveHandler = this.handleMouseLeave_.bind(this);
       this.forElement_.addEventListener('mouseenter', this.boundMouseEnterHandler,
           false);
       this.forElement_.addEventListener('click', this.boundMouseEnterHandler,
+          false);
+      this.forElement_.addEventListener('blur', this.boundMouseLeaveHandler);
+      this.forElement_.addEventListener('touchstart', this.boundMouseEnterHandler,
           false);
       this.forElement_.addEventListener('mouseleave', this.boundMouseLeaveHandler);
     }
@@ -115,6 +132,7 @@ MaterialTooltip.prototype.mdlDowngrade_ = function() {
   if (this.forElement_) {
     this.forElement_.removeEventListener('mouseenter', this.boundMouseEnterHandler, false);
     this.forElement_.removeEventListener('click', this.boundMouseEnterHandler, false);
+    this.forElement_.removeEventListener('touchstart', this.boundMouseEnterHandler, false);
     this.forElement_.removeEventListener('mouseleave', this.boundMouseLeaveHandler);
   }
 };
