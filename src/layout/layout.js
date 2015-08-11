@@ -31,7 +31,6 @@
     // Initialize instance.
     this.init();
   };
-  window.MaterialLayout = MaterialLayout;
 
   /**
    * Store constants in one place so they can be updated easily.

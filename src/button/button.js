@@ -31,7 +31,6 @@
     // Initialize instance.
     this.init();
   };
-  window.MaterialButton = MaterialButton;
 
   /**
    * Store constants in one place so they can be updated easily.
