@@ -243,6 +243,14 @@
       width: calc(100% - #{$layout-drawer-width});
     }
 
+    @media screen and (min-width: $layout-screen-size-threshold) {
+      .mdl-layout--fixed-drawer > & {
+        .mdl-layout__header-row {
+          padding-left: 40px;
+        }
+      }
+    }
+
     & > .mdl-layout-icon {
       position: absolute;
       left: $layout-header-desktop-indent;
