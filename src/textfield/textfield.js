@@ -31,7 +31,6 @@
     // Initialize instance.
     this.init();
   };
-  window.MaterialTextfield = MaterialTextfield;
 
   /**
    * Store constants in one place so they can be updated easily.
