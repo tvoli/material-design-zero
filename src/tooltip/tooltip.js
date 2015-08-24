@@ -31,7 +31,6 @@
     // Initialize instance.
     this.init();
   };
-  window.MaterialTooltip = MaterialTooltip;
 
   /**
    * Store constants in one place so they can be updated easily.
@@ -139,6 +138,11 @@
       this.forElement_.removeEventListener('mouseleave', this.boundMouseLeaveHandler);
     }
   };
+
+  var componentHandler = componentHandler || null;
+  if (!componentHandler && typeof module === 'object') {
+    var componentHandler = require('../mdlComponentHandler.js');
+  }
 
   // The component registers itself. It can assume componentHandler is available
   // in the global scope.
